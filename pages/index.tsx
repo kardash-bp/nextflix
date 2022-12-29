@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Banner from '../components/banner/banner'
+import Navbar from '../components/navbar/navbar'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -12,7 +14,13 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <h1>Nextflix</h1>
+      <Navbar username='d0nk1h0t' />
+      <Banner
+        title='Bullet Train'
+        subTitle='The end of the line is just the beginning.'
+        imgUrl='/static/bt-hero.jpg'
+      />
+      {/* <Card /> */}
     </>
   )
 }

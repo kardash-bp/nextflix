@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { Roboto_Slab } from '@next/font/google'
 
 const roboto = Roboto_Slab({
-  weight: '400',
+  weight: ['400', '700'],
   subsets: ['latin'],
 })
 
