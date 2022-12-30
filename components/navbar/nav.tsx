@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, MouseEvent } from 'react'
 import styles from './navbar.module.css'
 import { Bebas_Neue } from '@next/font/google'
 
@@ -37,34 +37,33 @@ const NavBar = ({ username }: TProps) => {
     // applyUsernameInNav()
   }, [])
 
-  const handleOnClickHome = () => {
-    // e.preventDefault()
+  const handleOnClickHome = (e: MouseEvent<HTMLLIElement>) => {
+    e.preventDefault()
     router.push('/')
   }
 
-  const handleOnClickMyList = () => {
-    // e.preventDefault()
+  const handleOnClickMyList = (e: MouseEvent<HTMLLIElement>) => {
+    e.preventDefault()
     router.push('/browse/my-list')
   }
 
-  const handleShowDropdown = () => {
-    //e.preventDefault()
+  const handleShowDropdown = (e: MouseEvent) => {
+    e.preventDefault()
     setShowDropdown(!showDropdown)
   }
 
-  const handleSignout = async () => {
-    // e.preventDefault()
+  const handleSignOut = async (e: MouseEvent) => {
+    e.preventDefault()
 
     try {
-      const response = await fetch('/api/logout', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${didToken}`,
-          'Content-Type': 'application/json',
-        },
-      })
-
-      const res = await response.json()
+      // const response = await fetch('/api/logout', {
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: `Bearer ${didToken}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      // })
+      // const res = await response.json()
     } catch (error) {
       console.error('Error logging out', error)
       router.push('/login')
@@ -92,7 +91,24 @@ const NavBar = ({ username }: TProps) => {
         <nav className={styles.navContainer}>
           <div>
             <button className={styles.usernameBtn} onClick={handleShowDropdown}>
-              <p className={styles.username}>{username}</p>
+              <p className={styles.username}>
+                {username}
+                {!showDropdown ? (
+                  <Image
+                    src='/static/more.png'
+                    alt='expand'
+                    width={32}
+                    height={32}
+                  />
+                ) : (
+                  <Image
+                    src='/static/less.png'
+                    alt='hide'
+                    width={32}
+                    height={32}
+                  />
+                )}
+              </p>
               {/** Expand more icon */}
               {/* <Image
                 src={'/static/expand_more.svg'}
@@ -105,8 +121,8 @@ const NavBar = ({ username }: TProps) => {
             {showDropdown && (
               <div className={styles.navDropdown}>
                 <div>
-                  <a className={styles.linkName} onClick={handleSignout}>
-                    Sign out
+                  <a className={styles.linkName} onClick={handleSignOut}>
+                    Logout
                   </a>
                   <div className={styles.lineWrapper}></div>
                 </div>

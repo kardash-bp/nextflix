@@ -22,7 +22,7 @@
   gap: 1rem;
   align-items: center;
   color: var(--red);
-  width: 15rem /* 128px */;
+  width: 10rem /* 128px */;
 }
 .logoLink {
   font-weight: 500;
@@ -44,6 +44,7 @@
 }
 
 .navItem {
+  margin-right: 1rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -67,7 +68,10 @@
 }
 
 .username {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navDropdown {
@@ -118,16 +122,10 @@
     flex-direction: row;
     align-items: center;
   }
-
+  .logoWrapper {
+    width: 15rem;
+  }
   .logoLink {
     margin-bottom: 0px;
-  }
-
-  .navItems {
-    margin-left: 3rem /* 48px */;
-  }
-
-  .navItem {
-    margin-right: 1.25rem /* 20px */;
   }
 }
